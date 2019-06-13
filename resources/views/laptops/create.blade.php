@@ -5,16 +5,16 @@
    <form method="POST" action="/laptops">
       {{csrf_field()}}
       <label for="brand">Brand: </label>
-      <input type="text" name="brand" id="brand"><br><br>
+      <input type="text" name="brand" id="brand" value="{{old('brand')}}"><br><br>
       
       <label for="name">Name: </label>
-      <input type="text" name="name" id="name"><br><br>
+      <input type="text" name="name" id="name" value="{{old('name')}}"><br><br>
 
       <label for="price">Price: </label>
-      <input type="number" name="price" id="price"><br><br>
+      <input type="number" name="price" id="price" value="{{old('price')}}"><br><br>
 
       <label for="memory">Memory: </label>
-      <input type="number" name="memory" id="memory"><br><br>
+      <input type="number" name="memory" id="memory" value="{{old('memory')}}"><br><br>
       
       <button type="submit">Add laptop</button>
 
