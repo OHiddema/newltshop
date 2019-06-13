@@ -20,4 +20,11 @@
       <button type="submit">Update laptop</button>
    </form>
 
+   <br>
+   <form method="POST" action="/laptops/{{$laptop->id}}">
+      {{method_field('DELETE')}}
+      {{csrf_field()}}
+      <button type="submit">Delete laptop</button>
+   </form>
+
 @endsection
