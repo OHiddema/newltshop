@@ -17,40 +17,25 @@ class LaptopsController extends Controller
     }
 
     public function store() {
-        $laptop = new Laptop();
-        $laptop->brand = request('brand');
-        $laptop->name = request('name');
-        $laptop->memory = request('memory');
-        $laptop->price = request('price');
-        $laptop->save();
+        Laptop::create(request(['brand', 'name', 'memory', 'price']));
         return redirect('/laptops');
     }
 
     public function edit(Laptop $laptop) {
-        // $laptop = Laptop::findOrFail($id);
-        // return view('laptops.edit', ['laptop' => $laptop]);
         return view('laptops.edit', compact('laptop'));
     }
 
     public function update(Laptop $laptop) {
-        // $laptop = Laptop::findOrFail($id);
-        $laptop->brand = request('brand');
-        $laptop->name = request('name');
-        $laptop->memory = request('memory');
-        $laptop->price = request('price');
-        $laptop->save();
+        $laptop->update(request(['brand', 'name', 'memory', 'price']));
         return redirect('/laptops');
     }
 
     public function destroy(Laptop $laptop) {
-        // Laptop::findOrFail($id)->delete();
         $laptop->delete();
         return redirect('/laptops');
     }
 
     public function show(Laptop $laptop) {
-        // $laptop = Laptop::findOrFail($id);
-        // return view('laptops.show', ['laptop' => $laptop]);
         return view('laptops.show', compact('laptop'));
     }
 }
