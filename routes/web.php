@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/laptops', 'LaptopsController@index');
-Route::post('/laptops', 'LaptopsController@store');
-Route::get('/laptops/create', 'LaptopsController@create');
+// Route::get('/laptops', 'LaptopsController@index');
+// Route::post('/laptops', 'LaptopsController@store');
+// Route::get('/laptops/create', 'LaptopsController@create');
+
+Route::resource('laptops', 'LaptopsController');
