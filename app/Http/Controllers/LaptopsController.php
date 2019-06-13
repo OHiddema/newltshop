@@ -17,13 +17,13 @@ class LaptopsController extends Controller
     }
 
     public function store() {
-        request()->validate([
+        $validation = request()->validate([
             'brand' => ['required', 'min:2'],
             'name' => ['required', 'min:2'],
             'memory' => 'required',
             'price' => 'required'
         ]);
-        Laptop::create(request(['brand', 'name', 'memory', 'price']));
+        Laptop::create($validation);
         return redirect('/laptops');
     }
 
