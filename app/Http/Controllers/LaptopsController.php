@@ -26,13 +26,14 @@ class LaptopsController extends Controller
         return redirect('/laptops');
     }
 
-    public function edit($id) {
-        $laptop = Laptop::findOrFail($id);
-        return view('laptops.edit', ['laptop' => $laptop]);
+    public function edit(Laptop $laptop) {
+        // $laptop = Laptop::findOrFail($id);
+        // return view('laptops.edit', ['laptop' => $laptop]);
+        return view('laptops.edit', compact('laptop'));
     }
 
-    public function update($id) {
-        $laptop = Laptop::findOrFail($id);
+    public function update(Laptop $laptop) {
+        // $laptop = Laptop::findOrFail($id);
         $laptop->brand = request('brand');
         $laptop->name = request('name');
         $laptop->memory = request('memory');
@@ -41,13 +42,15 @@ class LaptopsController extends Controller
         return redirect('/laptops');
     }
 
-    public function destroy($id) {
-        Laptop::findOrFail($id)->delete();
+    public function destroy(Laptop $laptop) {
+        // Laptop::findOrFail($id)->delete();
+        $laptop->delete();
         return redirect('/laptops');
     }
 
-    public function show($id) {
-        $laptop = Laptop::findOrFail($id);
-        return view('laptops.show', ['laptop' => $laptop]);
+    public function show(Laptop $laptop) {
+        // $laptop = Laptop::findOrFail($id);
+        // return view('laptops.show', ['laptop' => $laptop]);
+        return view('laptops.show', compact('laptop'));
     }
 }
