@@ -27,12 +27,12 @@ class LaptopsController extends Controller
     }
 
     public function edit($id) {
-        $laptop = Laptop::find($id);
+        $laptop = Laptop::findOrFail($id);
         return view('laptops.edit', ['laptop' => $laptop]);
     }
 
     public function update($id) {
-        $laptop = Laptop::find($id);
+        $laptop = Laptop::findOrFail($id);
         $laptop->brand = request('brand');
         $laptop->name = request('name');
         $laptop->memory = request('memory');
@@ -42,7 +42,7 @@ class LaptopsController extends Controller
     }
 
     public function destroy($id) {
-        Laptop::find($id)->delete();
+        Laptop::findOrFail($id)->delete();
         return redirect('/laptops');
     }
 }
