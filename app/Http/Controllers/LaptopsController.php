@@ -45,4 +45,9 @@ class LaptopsController extends Controller
         Laptop::findOrFail($id)->delete();
         return redirect('/laptops');
     }
+
+    public function show($id) {
+        $laptop = Laptop::findOrFail($id);
+        return view('laptops.show', ['laptop' => $laptop]);
+    }
 }
