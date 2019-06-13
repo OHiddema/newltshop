@@ -17,5 +17,17 @@
       <input type="number" name="memory" id="memory"><br><br>
       
       <button type="submit">Add laptop</button>
+
+      @if ($errors->any())
+         <br>
+         <div class='bg-danger'>
+            <ul>
+               @foreach ($errors->all() as $error)
+                  <li> {{$error}} </li>
+               @endforeach
+            </ul>
+         </div>
+      @endif
+
    </form>
 @endsection
