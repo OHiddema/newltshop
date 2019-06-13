@@ -3,8 +3,8 @@
 @section('content')
    <h1>Edit laptop</h1>
    <form method="POST" action="/laptops/{{$laptop->id}}">
-      {{method_field('PATCH')}}
-      {{csrf_field()}}
+      @method('PATCH')
+      @csrf
       <label for="brand">Brand: </label>
       <input type="text" name="brand" id="brand" value="{{$laptop->brand}}" ><br><br>
       
@@ -22,8 +22,8 @@
 
    <br>
    <form method="POST" action="/laptops/{{$laptop->id}}">
-      {{method_field('DELETE')}}
-      {{csrf_field()}}
+      @method('DELETE')
+      @csrf
       <button type="submit">Delete laptop</button>
    </form>
 
