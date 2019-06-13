@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/laptops', 'LaptopsController@index');
+Route::post('/laptops', 'LaptopsController@store');
+Route::get('/laptops/create', 'LaptopsController@create');
