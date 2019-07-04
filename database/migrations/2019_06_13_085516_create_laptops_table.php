@@ -17,8 +17,10 @@ class CreateLaptopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('brand');
             $table->string('name');
-            $table->integer('memory');
             $table->decimal('price');
+            $table->integer('memory');
+            $table->tinyInteger('blnactive');
+            $table->string('category');
             $table->timestamps();
         });
     }
