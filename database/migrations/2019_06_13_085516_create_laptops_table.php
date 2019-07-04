@@ -19,7 +19,7 @@ class CreateLaptopsTable extends Migration
             $table->string('name');
             $table->decimal('price');
             $table->integer('memory');
-            $table->tinyInteger('blnactive');
+            $table->boolean('blnactive');
             $table->string('category');
             $table->timestamps();
         });

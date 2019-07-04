@@ -17,13 +17,24 @@ class LaptopsController extends Controller
     }
 
     public function store() {
-        $validation = request()->validate([
+
+        request()->validate([
             'brand' => ['required', 'min:2'],
             'name' => ['required', 'min:2'],
             'memory' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'category' => 'required'
         ]);
-        Laptop::create($validation);
+        
+        $laptop = new Laptop();
+        $laptop->brand = request('brand');
+        $laptop->name = request('name');
+        $laptop->memory = request('memory');
+        $laptop->price = request('price');
+        $laptop->category = request('category');
+        $laptop->blnactive = request()->has('blnactive');
+        $laptop->save();
+
         return redirect('/laptops');
     }
 
@@ -32,7 +43,11 @@ class LaptopsController extends Controller
     }
 
     public function update(Laptop $laptop) {
-        $laptop->update(request(['brand', 'name', 'memory', 'price']));
+        $laptop->update(request(['brand', 'name', 'price', 'memory', 'category']));
+        // blnactive has to be handled separately, because it is not part of the request
+        // when set to false
+        $laptop->blnactive = request()->has('blnactive');
+        $laptop->save();
         return redirect('/laptops');
     }
 
